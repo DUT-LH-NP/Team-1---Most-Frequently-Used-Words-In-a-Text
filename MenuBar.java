@@ -290,5 +290,54 @@ public class MenuBar extends JFrame implements ActionListener {
 			}
 			
 		}
-		
+		public void editFile(String s) throws IOException {
+			if (Desktop.isDesktopSupported()) {
+			    try {
+			        File myFile = new File(s);
+			        Desktop.getDesktop().open(myFile);
+			    } catch (IOException ex) {
+			        // no application registered for txt
+			    }
+			}
+		}
+		public static void getModeType(String modeGet) {
+			mode = modeGet;
+		}
+		public static void getFilePath(String inputPath) {
+	    	inputdata = inputPath;
+	    	
+	    }
+		public void showData() throws IOException {
+			try { 
+			reader = new BufferedReader(new FileReader(path));
+			String line = reader.readLine(),result = "";
+		        while(line != null){
+		        	result = result + line + "\n";
+		        	line = reader.readLine();
+		        }
+		        textAreaOutput.setText(result);
+			}
+			catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			finally {
+				reader.close();
+			} 
+		}
+		public void deleteFile() {
+		    try {
+		    	File fileOutput = new File(path);
+		    	File fileInput = new File(inputdata);
+		    	if (save == 0 && mode.compareTo("manual") == 0)  {
+		    	   fileInput.delete();
+				   fileOutput.delete();
+			    }
+			    if (save == 0 && mode.compareTo("getLink") == 0) {
+				   fileOutput.delete();
+			    }
+			}
+		    catch (Exception ex) {
+		    	
+		    }
+		}
 }
