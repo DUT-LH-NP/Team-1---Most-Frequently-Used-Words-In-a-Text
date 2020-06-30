@@ -81,4 +81,50 @@ public class MostRepeatedWord {
         } 
         return temp; 
      } 
+    private static int getFile(String dirPath) {
+        int count = 0;
+        File f = new File(dirPath);
+        File[] files = f.listFiles();
+        if (files != null)
+        for (int i = 0; i < files.length; i++) {
+            count++;
+            File file = files[i];
+            if (file.isDirectory()) {   
+                 getFile(file.getAbsolutePath()); 
+            }
+        }
+        return count;
+    }
+    public static void createOutputFile(String[] result,int[] countOccurrence) {
+            try {
+            int countFile  = getFile("src\\OutputFile"); 
+        	
+            String filePath = "src\\OutputFile\\"  + "OutputFile_"+ String.valueOf(countFile+1) +".txt" ;
+            File fo = new File(filePath); 
+            MenuBar.outputPath(filePath);
+            FileWriter fos = new FileWriter(fo); 
+       	    BufferedWriter bw = new BufferedWriter(fos); 
+            bw.write("The 3 most words in input file are : "+result[0] + ", " + result[1] + ", " + result[2] + "\n");
+            bw.write("Number of occurences in order : "+ countOccurrence[0] + ", " + countOccurrence[1] + ", " + countOccurrence[2]);
+            bw.close();
+            }
+            catch (Exception exx) {
+                  JOptionPane.showMessageDialog(null, exx);
+        }
+    }
+    public static void createInputFile(String inputString) {
+        try {
+            int countFile  = getFile("src\\InputFile"); 
+            String filePath = "src\\InputFile\\"  + "InputFile_"+ String.valueOf(countFile+1) +".txt" ;
+            File fo = new File(filePath); 
+            MenuBar.getFilePath(filePath);
+            FileWriter fos = new FileWriter(fo); 
+            BufferedWriter bw = new BufferedWriter(fos); 
+            bw.write(inputString);
+            bw.close();
+         }
+         catch (Exception exx) {
+                  JOptionPane.showMessageDialog(null, exx);
+         }
+    }
 }    
