@@ -172,5 +172,123 @@ public class MenuBar extends JFrame implements ActionListener {
 		      mainFrame.setResizable(false);
 		      mainFrame.setVisible(true);  
 		}
+		public void setFilePath(String path) {
+			this.filePath = path;
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (e.getSource() == btnBrowse) {
+				JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+     			int returnValue = jfc.showOpenDialog(null);
+    			if (returnValue == JFileChooser.APPROVE_OPTION) {
+    				File selectedFile = jfc.getSelectedFile();
+    				//Creating BufferedReader object	
+    				try {
+						reader = new BufferedReader(new FileReader(selectedFile.getAbsolutePath()));
+					} 
+    				catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    				inputdata = selectedFile.getAbsolutePath();
+    			textAreaInput.setText(inputdata);
+    			MostRepeatedWord.getFilePath(inputdata);
+    			}
+			}	
+			if (e.getSource() == btnStart) {
+				if (mode.compareTo("getLink") == 0) {
+					try {
+						MostRepeatedWord.Start(reader);
+						textAreaOutput.setText(path);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						JOptionPane.showMessageDialog(null,"File path is null");
+					
+					}
+				}
+				else {
+					MostRepeatedWord.createInputFile(textAreaInput.getText());
+					try {
+						reader = new BufferedReader(new FileReader(inputdata));
+						MostRepeatedWord.Start(reader);
+
+						showData();
+					} 
+					catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+			
+			if (e.getSource() == btnPreview) {
+				try {
+					editFile(path);
+				}
+				catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error! Invalid file path!");
+				}
+			}
+			
+			if (e.getSource() == btnHistory) {
+				new historyFrame();
+			}
+			
+			if (e.getSource() == btnEdit) {
+				try {
+					editFile(inputdata);
+				}
+				catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, "Error! Invalid file path!");
+				}
+			}
+			
+			if (e.getSource() == New) {
+				textAreaInput.setText("");
+				textAreaOutput.setText("");
+				deleteFile();
+				path = "";
+				inputdata = "";
+				save = 0;
+			}
+			if (e.getSource() == Exit) {
+				deleteFile();
+				System.exit(0);
+			}
+			if (e.getSource() == btnAbout) {
+				new About();
+			}
+			if (e.getSource() == Save) {
+	        	if (textAreaInput.getText().compareTo("") !=0 ) {
+				       try {
+				           Database dtb = new Database();
+	        	           dtb.Insert(inputdata,path);
+	        	           JOptionPane.showMessageDialog(null, "Successfully completed!");
+	        	           save = 1;
+	        	       }
+	        	       catch (Exception ex) {
+	        		       JOptionPane.showMessageDialog(null, ex);
+	         	       }
+	        	}
+	        	else JOptionPane.showMessageDialog(null, "There is no data to save!");
+			}
+			
+			if (e.getSource() == btnMode) {
+				try {
+				new GetModeFrame();
+				}
+				catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+			if (e.getSource() == btnHelp) {
+				new HelpFrame();
+			}
+			
+		}
 		
 }
