@@ -33,7 +33,7 @@ public class HelpFrame extends JFrame {
 				+ "\n\nCheck out the 'About' button for more details");
 		
 		txtMain.setWrapStyleWord(true);
-	    txtMain.setLineWrap(true);
+                txtMain.setLineWrap(true);
 		txtMain.setBounds(0, 55, 452, 255);
 		txtMain.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 5));
 		txtMain.setEditable(false);
