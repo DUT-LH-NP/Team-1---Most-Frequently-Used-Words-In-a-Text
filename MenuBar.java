@@ -111,9 +111,9 @@ public class MenuBar extends JFrame implements ActionListener {
               mainFrame.getContentPane().add(labelOutput);
               
               textAreaInput = new JTextArea();
-               textAreaInput.setBounds(48, 258, 286, 244);
+              textAreaInput.setBounds(48, 258, 286, 244);
               mainFrame.getContentPane().add(textAreaInput);
-                textAreaInput.setWrapStyleWord(true);
+              textAreaInput.setWrapStyleWord(true);
               textAreaInput.setLineWrap(true);
               textAreaInput.setBorder(BorderFactory.createLineBorder(Color.black));
               
