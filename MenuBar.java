@@ -67,8 +67,6 @@ public class MenuBar extends JFrame implements ActionListener {
 		      menuBar.add(New);	
 		      menuBar.add(Save);
 		      menuBar.add(Exit);
-
-		     // menuBar.add(testButton);
 		      
 		      fileMenu.setMnemonic(KeyEvent.VK_F);
 		      	      	      
@@ -98,7 +96,7 @@ public class MenuBar extends JFrame implements ActionListener {
 		      mainFrame.getContentPane().add(mainLabel);
 		      
 		      JLabel labelWordsIcon = new JLabel("New label");
-		      labelWordsIcon.setIcon(new ImageIcon("src\\Resources\\word_final - Copy.jpg"));
+		      labelWordsIcon.setIcon(new ImageIcon("src\\Resources\\word_final.jpg"));
 		      labelWordsIcon.setBounds(218, 13, 330, 150);
 		      mainFrame.getContentPane().add(labelWordsIcon);
 		      
