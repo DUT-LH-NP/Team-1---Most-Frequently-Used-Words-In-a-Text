@@ -32,18 +32,18 @@ public class HelpFrame extends JFrame {
 				+ "\nNotice: Switch executing method by clicking 'Mode' button"
 				+ "\n\nCheck out the 'About' button for more details");
 		
-		txtMain.setWrapStyleWord(true);
+                txtMain.setWrapStyleWord(true);
                 txtMain.setLineWrap(true);
-		txtMain.setBounds(0, 55, 452, 255);
-		txtMain.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 5));
-		txtMain.setEditable(false);
-		contentPane.add(txtMain);
+                txtMain.setBounds(0, 55, 452, 255);
+                txtMain.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 5));
+                txtMain.setEditable(false);
+                contentPane.add(txtMain);
 		
-		JLabel mainLabel = new JLabel("_________Most Frequently Words Used In A Text__________");
-		mainLabel.setFont(new Font("Monotype Corsiva", Font.BOLD, 18));
-		mainLabel.setBounds(10, 11, 442, 33);
-		contentPane.add(mainLabel);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+                JLabel mainLabel = new JLabel("_________Most Frequently Words Used In A Text__________");
+                mainLabel.setFont(new Font("Monotype Corsiva", Font.BOLD, 18));
+                mainLabel.setBounds(10, 11, 442, 33);
+                contentPane.add(mainLabel);
+                this.setLocationRelativeTo(null);
+                this.setVisible(true);
 	}
 }
